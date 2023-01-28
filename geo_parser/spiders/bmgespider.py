@@ -1,6 +1,5 @@
 import scrapy
-
-
+import logging
 class BMGESpider(scrapy.Spider):
     name = "bmge"
     start_urls = [
@@ -14,6 +13,8 @@ class BMGESpider(scrapy.Spider):
         yield from response.follow_all(news_links, self.parse_news)
 
         next_link = response.css('div.next a::attr(href)').getall()
+
+        self.logger.info('Parse function called on %s', next_link)
         if next_link:
             yield response.follow(next_link[-1], self.parse)
 
