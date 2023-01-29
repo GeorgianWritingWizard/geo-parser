@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'geo_parser.middlewares.GeoParserSpiderMiddleware': 543,
+#    'geo_parser.middlewares.GeoParser1SpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'geo_parser.middlewares.GeoParserDownloaderMiddleware': 543,
+#    'geo_parser.middlewares.GeoParser1DownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'geo_parser.pipelines.GeoParserPipeline': 300,
+#    'geo_parser.pipelines.GeoParser1Pipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
