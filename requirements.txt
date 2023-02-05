@@ -1,6 +1,5 @@
 attrs==22.2.0
 Automat==22.10.0
-certifi @ file:///croot/certifi_1671487769961/work/certifi
 cffi==1.15.1
 charset-normalizer==3.0.1
 constantly==15.1.0
