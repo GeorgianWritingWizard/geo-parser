@@ -1,5 +1,6 @@
 import scrapy
-import logging
+
+
 class BMGESpider(scrapy.Spider):
     name = "bmge"
     start_urls = [

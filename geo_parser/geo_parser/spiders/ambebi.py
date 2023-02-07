@@ -7,6 +7,10 @@ class AmbebiGESpider(scrapy.Spider):
         'https://www.ambebi.ge/article/288570-abc'
     ]
 
+    custom_settings = {
+        'CONCURRENT_REQUESTS': 2,
+    }
+
     def parse(self, response, **kwargs):
         orig_url = response.url
         split_url = response.url.split('-')
@@ -16,7 +20,6 @@ class AmbebiGESpider(scrapy.Spider):
         for i in range(new_pk, 21168, -1):
             next_link = orig_url.replace(pk, str(i))
             yield response.follow(next_link, self.parse_news)
-
 
     def parse_news(self, response):
         yield {
