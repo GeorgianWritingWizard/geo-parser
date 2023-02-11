@@ -8,6 +8,6 @@
 from itemadapter import ItemAdapter
 
 
-class GeoParserPipeline:
+class GeoParser1Pipeline:
     def process_item(self, item, spider):
         return item

@@ -14,14 +14,14 @@ class BMGESpider(scrapy.Spider):
         yield from response.follow_all(news_links, self.parse_news)
 
         next_link = response.css('div.next a::attr(href)').getall()
+
+        self.logger.info('Parse function called on %s', next_link)
         if next_link:
             yield response.follow(next_link[-1], self.parse)
 
     def parse_news(self, response):
-        contents = response.css('div.single-text p::text').getall()
-        if not contents:
-            contents = response.css('div.single-text div::text').getall()
         yield {
             'title': response.css('div.article-title h2::text').get(),
-            'content': [text.strip() for text in contents if text.strip()],
+            'content': [content.strip() for content in response.css('div.single-text *::text').getall()
+                        if content.strip()],
         }
