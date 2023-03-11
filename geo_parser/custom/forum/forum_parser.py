@@ -15,7 +15,7 @@ headers = {
 }
 
 
-all_pages = [BASE_URL + f'{i}' for i in range(0, 230760, 40)]
+all_pages = [BASE_URL + f'{i}' for i in range(0, 231280, 40)]
 
 
 TIMEOUT = 5048
@@ -66,12 +66,12 @@ async def generate_inner_pages(session, url):
 
 async def main():
     data = []
-    BATCH = 20
+    BATCH = 1
     conn = aiohttp.TCPConnector(limit=5)
     async with aiohttp.ClientSession(connector=conn) as session:
         with open('forum_ge_politika.txt', 'a', encoding='utf-8') as file:
 
-            for i in tqdm(range(36*BATCH, len(all_pages), BATCH), desc="FORUM PAGE NUMBER"):
+            for i in tqdm(range(0, len(all_pages), BATCH), desc="FORUM PAGE NUMBER"):
                 posts = []
 
                 for page in all_pages[i: i + BATCH]:
@@ -99,13 +99,16 @@ async def main():
                         continue
 
                     if len(data) > 1_000:
-                        for line in data:
+                        # yeh fuck it
+                        ss = set(data)
+                        for line in list(ss):
                             file.write(line.strip() + '\n')
 
                         data = []
 
         with open('forum_ge_politika.txt', 'a', encoding='utf-8') as file:
-            for line in data:
+            ss = set(data)
+            for line in list(ss):
                 file.write(line.strip() + '\n')
 
 if __name__ == "__main__":
