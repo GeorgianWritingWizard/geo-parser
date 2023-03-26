@@ -67,7 +67,7 @@ async def generate_inner_pages(session, url):
 async def main():
     data = []
     BATCH = 1
-    conn = aiohttp.TCPConnector(limit=5)
+    conn = aiohttp.TCPConnector(limit=4)
     async with aiohttp.ClientSession(connector=conn) as session:
         with open('forum_ge_politika.txt', 'a', encoding='utf-8') as file:
 
